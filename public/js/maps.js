@@ -1,6 +1,19 @@
 
+const confirmButton = document.querySelector('.confirm-dest-button');
+if (confirmButton) {
+    confirmButton.addEventListener('click', newTrip);
+}
+
+// document.body.addEventListener('mousenter',".place-hours-label",function(event){
+//   var editTrip = document.getElementById("#edit-trip-div");
+//   editTrip.style.display = '';
+// }
+
+// document.body.nextSibling.style.display ='none';
+
 
 var currentTrip;
+
 
 
 //GOOGLE MAP PLACES API
@@ -72,21 +85,38 @@ var currentTrip;
     });
 
   }
-const confirmButton = document.querySelector('.confirm-dest-button');
-if (confirmButton) {
-    confirmButton.addEventListener('click', function (newTrip) {
-      location.href = './single';
-    });
-  }
-function getNearbyPlaces(){
-   
+
+ this.getInfo=function(){
+   return{
+     latititude : markers[0].position.lat(),
+     longtitude  :markers[0].position.lng(),
+     title : markers[0].title
+   };
+ };
+
+function newTrip(){
+  getNearbyPlaces("new",getInfo().latititude,getInfo().longtitude);
+  var newTrip = document.getElementById("#edit-trip-div");
+  newTrip.style.display = '';
+}
+
+
+
+function getNearbyPlaces(status,lat,lng){
+    
+  document.getElementById("#search-div").style.visibility = "hidden"; 
+  documentgetElementsByClassName('.confirm-dest-button').parentNode
+    .removeChild(document.getElementsByClassName('confirm-dest-button'));
+  
+
+
    var service = new google.maps.places.PlacesService(map);
    const request ={
       location: dest,
        radius : 500,
        types :['airport','cafe','art_gallery','church','dentist','park','stadium','zoo']
    };
-   
+
    service.nearbySearch(request,callback);
 
 }

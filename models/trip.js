@@ -12,22 +12,12 @@ var tripSchema = new mongoose.Schema({
 });
 
 
-
-
 tripSchema.pre('remove', function(next){
-
-    this.model('User').update(
-        {_id: this.user},
-        {$pull: {trips: this._id}},
-        {multi: true},
-        function(err, numAffected) {
-
-    		next()
-        }
-    );
-
-
-});
+    console.log("pre function called");
+    console.log(this)
+    this.model('Trip').remove({ user: this._id}).exec();
+    next();
+})
 
 const Trip = mongoose.model('Trip', tripSchema);
 

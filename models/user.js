@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },

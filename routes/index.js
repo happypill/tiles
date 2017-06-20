@@ -10,7 +10,7 @@ const router = express.Router();
 const homeController = require('../controllers/home');
 const userController = require('../controllers/user');
 const contactController = require('../controllers/contact');
-const mapController = require('../controllers/mapController');
+const mapController = require('../controllers/map');
 
 router.get('/', homeController.index);
 router.get('/login', userController.getLogin);
@@ -25,6 +25,7 @@ router.post('/signup', userController.postSignup);
 router.get('/contact', contactController.getContact);
 router.post('/contact', contactController.postContact);
 router.get('/destination', mapController.getMap);
+
 
 
 

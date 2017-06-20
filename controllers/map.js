@@ -4,7 +4,7 @@ var Place   = require('../models/place');
 
 exports.showCreateTripForm=(req,res)=> {
 
-	res.render('newtrip', { message: req.flash('errorMessage') });
+	res.render('trip', { message: req.flash('errorMessage') });
 
 
 };
@@ -133,8 +133,7 @@ exports.showTripsList=(req,res)=>{
 
 // FUNCTION TO REMOVE A SINGLE TRIP THE TRIP
 
-
-function removeTrip(req,res) {
+exports.removeTrip=(req,res)=> {
 
 	var id = req.params.id;
 

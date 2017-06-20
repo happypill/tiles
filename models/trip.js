@@ -29,6 +29,7 @@ tripSchema.pre('remove', function(next){
 
 });
 
+const Trip = mongoose.model('Trip', tripSchema);
 
 
-module.exports = mongoose.model("Trip", tripSchema);
+module.exports = Trip;

@@ -47,8 +47,6 @@ exports.createTrip=(req,res)=> {
 
 
 
-// FUNCTION TO CREATE A PLACE AND PUSH IT TO THE TRIP's PLACES ARRAY //
-
 exports.createPlace=(req,res)=> {
 
 	var place = new Place(req.body.place);
@@ -64,9 +62,6 @@ exports.createPlace=(req,res)=> {
 
 	})
 }
-
-
-// FUNCTION TO REMOVE A SINGLE PLACE FROM A TRIP
 
 exports.removePlace=(req,res)=> {
 
@@ -85,7 +80,7 @@ exports.removePlace=(req,res)=> {
 
 
 
-// PULLING FROM DB LIST OF PLACES THAT BELONG TO A TRIP
+
 
 exports.showTripSummary=(req,res)=> {
 
@@ -111,7 +106,6 @@ exports.showTripSummary=(req,res)=> {
 
 
 
-// SHOW LIST OF TRIPS FOR LOGGED IN USER
 
 exports.showTripsList=(req,res)=>{
 
@@ -130,8 +124,6 @@ exports.showTripsList=(req,res)=>{
 
 
 
-
-// FUNCTION TO REMOVE A SINGLE TRIP THE TRIP
 
 exports.removeTrip=(req,res)=> {
 

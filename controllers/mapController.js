@@ -31,23 +31,25 @@ exports.createTrip = (req, res) => {
 	// places: [{type: mongoose.Schema.ObjectId, ref: 'Place'}],
 	// user : {type: mongoose.Schema.ObjectId, ref: 'User'}
 	newTrip.destination = req.body.destination
-	newTrip.longitude = req.body.longitude
+	newTrip.longitude= req.body.longitude
 	newTrip.latitude = req.body.latitude
 	newTrip.places = req.body.places
 	newTrip.user = req.body.user
 
+  console.log(req.body);
 	newTrip.save((err, trip) => {
-		if (err) res.json({message: 'could not save new trip because: ' + err})
+		if (err) return res.json({message: 'could not save new trip because: ' + err})
 		res.redirect('/destination');
 	})
 }
+
 
 exports.getAll = (req, res) => {
 	Trip.find((err, trips) => {
 		if (err) res.json({message: 'could not find trips because: ' + err})
 		console.log('getting all')
 		res.render('destination', {
-			title: 'destination',
+			title: 'destinations',
 			destinations: trips
 		})
 	})

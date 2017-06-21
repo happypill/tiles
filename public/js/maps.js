@@ -9,11 +9,11 @@ var currentTrip;
     var map = new google.maps.Map(document.getElementById('places-map'), {
       center: {lat: 1.352083, lng: 103.819836},
       zoom: 13,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId:'roadmap'
     });
 
   // Create the search box and link it to the UI element.
-    var input = document.getElementById('place-input');
+    var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
     // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -58,10 +58,10 @@ var currentTrip;
           position: place.geometry.location
         }));
 
-        $('#destination').val(place.name)
-        $('#longitude').val(place.longitude)
-        $('#latitude').val(place.latititude)
-        console.log(place.geometry.location)
+        $('#destination').val(place.name);
+        $('#longitude').val(1);
+        $('#latitude').val(1);
+
 
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
@@ -75,16 +75,17 @@ var currentTrip;
 
   }
 
+
  this.getInfo=function(){
    return{
      latititude : markers[0].position.lat(),
-     longtitude  :markers[0].position.lng(),
-     title : markers[0].title
+     longitude  :markers[0].position.lng(),
+     title : markers[0].geometry.title
    };
  };
 
 function newTrip(){
-  getNearbyPlaces("new",getInfo().latititude,getInfo().longtitude);
+  getNearbyPlaces("new",getInfo().latitude,getInfo().longitude);
   var newTrip = document.getElementById("#edit-trip-div");
   newTrip.style.display = '';
 }
@@ -107,5 +108,8 @@ function getNearbyPlaces(status,lat,lng){
    };
 
    service.nearbySearch(request,callback);
+
+}
+function geolocate(){
 
 }

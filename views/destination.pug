@@ -16,7 +16,7 @@ block content
 			form#newTripForm(method="POST" action="/destination/newTrip")
 				#search-field-and-button
 					input(type='hidden', name='_csrf', value=_csrf)
-					input#place-input.controls(type='text', placeholder='Enter a city, town or region',name='search_bar')
+					input#pac-input.controls(type='text', placeholder='Enter a city, town or region',name='search_bar')
 					input#destination(type='hidden', name='destination', placeholder='dest')
 					input#longitude(type='hidden', name='longitude', placeholder='long')
 					input#latitude(type='hidden', name='latitude', placeholder='lat')

@@ -1,17 +1,3 @@
-
-const confirmButton = document.querySelector('.confirm-dest-button');
-if (confirmButton) {
-    confirmButton.addEventListener('click', newTrip);
-}
-
-// document.body.addEventListener('mousenter',".place-hours-label",function(event){
-//   var editTrip = document.getElementById("#edit-trip-div");
-//   editTrip.style.display = '';
-// }
-
-// document.body.nextSibling.style.display ='none';
-
-
 var currentTrip;
 
 
@@ -24,8 +10,6 @@ var currentTrip;
       center: {lat: 1.352083, lng: 103.819836},
       zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      disableDefaultUI: false
-      //styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f0df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#d4e9b6"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c3e2aa"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#c9bfd1"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#B3CADD"}]}]
     });
 
   // Create the search box and link it to the UI element.
@@ -73,6 +57,11 @@ var currentTrip;
           title: place.name,
           position: place.geometry.location
         }));
+
+        $('#destination').val(place.name)
+        $('#longitude').val(place.longitude)
+        $('#latitude').val(place.latititude)
+        console.log(place.geometry.location)
 
         if (place.geometry.viewport) {
           // Only geocodes have viewport.

@@ -31,14 +31,14 @@ exports.createTrip = (req, res) => {
 	// places: [{type: mongoose.Schema.ObjectId, ref: 'Place'}],
 	// user : {type: mongoose.Schema.ObjectId, ref: 'User'}
 	newTrip.destination = req.body.destination
-	newTrip.longitude = req.body.lng
-	newTrip.latitude = req.body.lat
+	newTrip.longitude = req.body.longitude
+	newTrip.latitude = req.body.latitude
 	newTrip.places = req.body.places
 	newTrip.user = req.body.user
 
 	newTrip.save((err, trip) => {
 		if (err) res.json({message: 'could not save new trip because: ' + err})
-		res.send(trip)
+		res.redirect('/destination');
 	})
 }
 

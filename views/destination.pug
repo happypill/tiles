@@ -6,18 +6,22 @@ block content
 
 	section
 		h1=title
-		//- ul
-		//- for destination in destinations
-		//- 	li=destination
+		ul
+			for destination in destinations
+				li=destination
 
 	section
 		#search-div
 			h4 Choose your destination
-			#search-field-and-button
-				input#place-input.controls(type='text', placeholder='Enter a city, town or region',name='search_bar')
-				input#search-bar-button.confirm-dest-button(type='button', value='Confirm destination',name='search_button')
-
-		#edit-trip-div
+			form#newTripForm(method="POST" action="/destination/newTrip")
+				#search-field-and-button
+					input(type='hidden', name='_csrf', value=_csrf)
+					input#place-input.controls(type='text', placeholder='Enter a city, town or region',name='search_bar')
+					input#destination(type='hidden', name='destination', placeholder='dest')
+					input#longitude(type='hidden', name='longitude', placeholder='long')
+					input#latitude(type='hidden', name='latitude', placeholder='lat')
+					input#search-bar-button.confirm-dest-button(type='Submit', value='Confirm destination',name='search_button')
+			#edit-trip-div
 			h1.trip-destination
 			//- #edit-trip-content
 			//- input#done-button(type='button', value='Done')

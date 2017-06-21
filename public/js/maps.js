@@ -29,7 +29,7 @@ var currentTrip;
     });
 
   // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
+    var input = document.getElementById('place-input');
     var searchBox = new google.maps.places.SearchBox(input);
     // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -39,7 +39,7 @@ var currentTrip;
       searchBox.setBounds(map.getBounds());
     });
 
-    
+
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
      searchBox.addListener('places_changed', function() {
@@ -103,11 +103,11 @@ function newTrip(){
 
 
 function getNearbyPlaces(status,lat,lng){
-    
-  document.getElementById("#search-div").style.visibility = "hidden"; 
+
+  document.getElementById("#search-div").style.visibility = "hidden";
   documentgetElementsByClassName('.confirm-dest-button').parentNode
     .removeChild(document.getElementsByClassName('confirm-dest-button'));
-  
+
 
 
    var service = new google.maps.places.PlacesService(map);

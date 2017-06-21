@@ -11,15 +11,6 @@ var tripSchema = new mongoose.Schema({
 
 });
 
-var TripSchema = new mongoose.Schema({
-    start: String,
-    destination: String,
-    beginDate: Date,
-    endDate: Date,
-    created_at: {type: Date, default: new Date()},
-    updated_at: {type: Date, default: new Date()},
-    _user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-})
 tripSchema.pre('remove', function(next){
     console.log("pre function called");
     console.log(this)

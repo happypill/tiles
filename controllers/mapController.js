@@ -22,7 +22,44 @@ exports.isAuthenticated = (req, res, next) => {
   req.flash('errors', {msg: 'Log in required.'})
   res.redirect('/auth/login');
 };
-exports.createTrip=(req,res)=>{
-	var trip = new Trip(req.body.trip);
 
+exports.createTrip = (req, res) => {
+	let newTrip = new Trip()
+	// destination: { type: String, required: true },
+	// longitude : { type: Number, required: true},
+	// latitude : { type: Number, required: true},
+	// places: [{type: mongoose.Schema.ObjectId, ref: 'Place'}],
+	// user : {type: mongoose.Schema.ObjectId, ref: 'User'}
+	newTrip.destination = req.body.destination
+	newTrip.longitude = req.body.lng
+	newTrip.latitude = req.body.lat
+	newTrip.places = req.body.places
+	newTrip.user = req.body.user
+
+	newTrip.save((err, trip) => {
+		if (err) res.json({message: 'could not save new trip because: ' + err})
+		res.send(trip)
+	})
+}
+
+exports.getAll = (req, res) => {
+	Trip.find((err, trips) => {
+		if (err) res.json({message: 'could not find trips because: ' + err})
+		console.log('getting all')
+		res.render('destination', {
+			title: 'destination',
+			destinations: trips
+		})
+	})
+}
+
+exports.getOne = (req, res) => {
+	const id = req.params.id
+	Trip.findById({_id: id}, (err, trip) => {
+		if (err) res.json({message: 'could not find trip by id because: ' + err})
+		res.render('destination', {
+			title: 'destination',
+			destination: trip
+		})
+	})
 }

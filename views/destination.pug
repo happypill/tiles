@@ -2,14 +2,20 @@ extends layout
 
 block content
 	.page-header
-		h3 Map
+		h1 Plan your trip
+
+	section
+		h1=title
+		//- ul
+		//- for destination in destinations
+		//- 	li=destination
 
 	section
 		#search-div
-			h1 Choose your destination
+			h4 Choose your destination
 			#search-field-and-button
-				input#pac-input.controls(type='text', placeholder='Enter a city, town or region')
-				input#search-bar-button.confirm-dest-button(type='button', value='Confirm destination')
+				input#place-input.controls(type='text', placeholder='Enter a city, town or region',name='search_bar')
+				input#search-bar-button.confirm-dest-button(type='button', value='Confirm destination',name='search_button')
 
 		#edit-trip-div
 			h1.trip-destination

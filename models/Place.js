@@ -9,19 +9,12 @@ var placeSchema = new mongoose.Schema({
 
 
 
-
 placeSchema.pre('remove', function(next){
-
-    this.model('Trip').update(
-        {_id: this.trip},
-        {$pull: {places: this._id}},
-        {multi: true},
-        function(err, numAffected) {
-    		next();
-        }
-    );
-
-});
+	console.log("pre function called");
+	console.log(this)
+	this.model('Trip').remove({ user: this._id}).exec();
+	next();
+})
 
 
 module.exports = mongoose.model("Place", placeSchema);

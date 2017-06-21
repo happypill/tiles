@@ -68,7 +68,7 @@ userSchema.methods.gravatar = function gravatar(size) {
 userSchema.pre('remove', function(next){
 	console.log("pre function called");
 	console.log(this)
-	this.model('Trip').remove({ user: this._id}).exec();
+	this.model('User').remove({ user: this._id}).exec();
 	next();
 })
 const User = mongoose.model('User', userSchema);

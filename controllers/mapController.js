@@ -3,9 +3,12 @@ var Trip   = require('../models/Trip');
 var Place   = require('../models/Place');
 
 
-exports.showCreateTripForm=(req,res)=> {
+exports.showForm=(req,res)=> {
 
-	res.render('trip', { message: req.flash('errorMessage') });
+	res.render('trip', {
+		message: req.flash('errorMessage')
+	});
+	
 
 
 };

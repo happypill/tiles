@@ -1,6 +1,5 @@
-var User   = require('../models/User');
-var Trip   = require('../models/Trip');
-var Place   = require('../models/Place');
+var User   = require('../models/user');
+var Trip   = require('../models/trip');
 
 
 exports.showForm=(req,res)=> {
@@ -8,8 +7,6 @@ exports.showForm=(req,res)=> {
 	res.render('trip', {
 		message: req.flash('errorMessage')
 	});
-	
-
 
 };
 
@@ -25,3 +22,7 @@ exports.isAuthenticated = (req, res, next) => {
   req.flash('errors', {msg: 'Log in required.'})
   res.redirect('/auth/login');
 };
+exports.createTrip=(req,res)=>{
+	var trip = new Trip(req.body.trip);
+
+}

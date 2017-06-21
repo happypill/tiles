@@ -21,7 +21,16 @@ router.get('/reset/:token', userController.getReset);
 router.post('/reset/:token', userController.postReset);
 router.get('/signup', userController.getSignup);
 router.post('/signup', userController.postSignup);
-router.get('/destination', mapController.getMap);
+
+router.get('/destination', mapController.isAuthenticated, (req, res, next) => {
+  if (!req.user) {
+    req.flash('error', 'You must be logged in to access that page.')
+    res.redirect('/auth/login')
+  } else {
+    res.render('destination')
+  }
+})
+
 
 
 module.exports = router;

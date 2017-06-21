@@ -1,6 +1,7 @@
-var User   = require('../models/user');
-var Trip   = require('../models/trip');
-var Place   = require('../models/place');
+var User   = require('../models/User');
+var Trip   = require('../models/Trip');
+var Place   = require('../models/Place');
+
 
 exports.showCreateTripForm=(req,res)=> {
 

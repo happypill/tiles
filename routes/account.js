@@ -7,7 +7,7 @@ const router = express.Router();
 /**
  * Controllers, configs
  */
-const userController = require('../controllers/user');
+const userController = require('../controllers/userController');
 const passportConfig = require('../config/passport');
 
 

@@ -7,9 +7,9 @@ const router = express.Router();
 /**
  * Controllers, configs
  */
-const homeController = require('../controllers/home');
-const userController = require('../controllers/user');
-const mapController = require('../controllers/map');
+const homeController = require('../controllers/homeController');
+const userController = require('../controllers/userController');
+const mapController = require('../controllers/mapController');
 
 router.get('/', homeController.index);
 router.get('/login', userController.getLogin);

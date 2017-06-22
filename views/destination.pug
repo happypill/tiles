@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	.page-header
+		h1 Plan your trip
+
+	section
+		h1=title
+		ul
+			for destination in destinations
+				li=destination
+
+	section
+		#search-div
+			h4 Choose your destination
+			form#newTripForm(method="POST" action="/destination/trip")
+				#search-field-and-button
+					input(type='hidden', name='_csrf', value=_csrf)
+					input#pac-input.controls(type='text', placeholder='Enter a city, town or region',name='search_bar')
+					input#destination(type='hidden', name='destination', placeholder='dest')
+					input#longitude(type='hidden', name='longitude', placeholder='long')
+					input#latitude(type='hidden', name='latitude', placeholder='lat')
+					input#search-bar-button.confirm-dest-button(type='Submit', value='Confirm destination',name='search_button')
+			#places-map.map
+
+
+		#trips-list
+		section

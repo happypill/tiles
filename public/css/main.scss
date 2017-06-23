@@ -16,6 +16,11 @@ html {
 body {
   padding-top: 60px;
   margin-bottom: 75px;
+  background: #ffecd2;
+  background: -webkit-linear-gradient(left, #ffecd2 , #fcb69f);
+  background: -o-linear-gradient(right, #ffecd2, #fcb69f);
+  background: -moz-linear-gradient(right, #ffecd2, #fcb69f);
+  background: linear-gradient(to right, #ffecd2 , #fcb69f);
 }
 
 footer {

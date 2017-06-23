@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 var currentTrip;
 
 
@@ -179,4 +179,3 @@ function callback(results, status) {
 }
 
 
-});

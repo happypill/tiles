@@ -62,7 +62,7 @@ var currentTrip;
 
 
         $('#destination').val(place.name);
-        $('#longitude').val(position.);
+        $('#longitude').val(1);
         $('#latitude').val(1);
 
 

@@ -62,7 +62,7 @@ var currentTrip;
 
 
         $('#destination').val(place.name);
-        $('#longitude').val(1);
+        $('#longitude').val(position.);
         $('#latitude').val(1);
 
 
@@ -77,7 +77,7 @@ var currentTrip;
     });
 
   }
-
+  var dest = {lat: lat, lng: lng};
 function geocodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
@@ -140,7 +140,7 @@ function getNearbyPlaces(status,lat,lng){
 }
 
 
-  var dest = {lat: lat, lng: lng};
+
 
 function createNewTrip(lat,lng){
     $.ajax({
@@ -177,4 +177,3 @@ function callback(results, status) {
 
   }
 }
-

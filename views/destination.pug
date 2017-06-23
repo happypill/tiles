@@ -13,6 +13,7 @@ block content
 	section
 		#search-div
 			h4 Choose your destination
+
 			form#newTripForm(method="POST" action="/destination/trip")
 				#search-field-and-button
 					input(type='hidden', name='_csrf', value=_csrf)
@@ -21,7 +22,11 @@ block content
 					input#longitude(type='hidden', name='longitude', placeholder='long')
 					input#latitude(type='hidden', name='latitude', placeholder='lat')
 					input#search-bar-button.confirm-dest-button(type='Submit', value='Confirm destination',name='search_button')
+
+
+			h1.trip-destination
 			#places-map.map
+
 
 
 		#trips-list

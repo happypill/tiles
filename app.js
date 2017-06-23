@@ -24,6 +24,17 @@ const fs = require('fs');
  */
 dotenv.load({ path: '.env.example' });
 
+/**
+ * Create Express server.
+ */
+ // keys
+ // const key = fs.readFileSync('./keys/realtimemaps-key.pem');  // fs = file system
+ // const cert = fs.readFileSync('./keys/realtimemaps-cert.pem');  // fs = file system
+ //
+ // const option = {
+ //   key: key,
+ //   cert: cert
+ // };
 
 
 const app = express();

@@ -1,4 +1,7 @@
 
+var currentTrip;
+
+
 
 
 //GOOGLE MAP PLACES API
@@ -57,6 +60,12 @@
           position: place.geometry.location
         }));
 
+
+        $('#destination').val(place.name);
+        $('#longitude').val(1);
+        $('#latitude').val(1);
+
+
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
           bounds.union(place.geometry.viewport);
@@ -68,6 +77,7 @@
     });
 
   }
+
 function geocodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
@@ -85,6 +95,17 @@ function geocodeAddress(geocoder, resultsMap) {
     }
   });
 }
+
+
+
+
+ this.getInfo=function(){
+   return{
+     latititude : markers[0].position.lat(),
+     longitude  :markers[0].position.lng(),
+     title : markers[0].geometry.title
+   };
+ };
 
 
 function newTrip(){
@@ -105,7 +126,11 @@ function getNearbyPlaces(status,lat,lng){
 
    var service = new google.maps.places.PlacesService(map);
    const request ={
+
       location: destination,
+
+      location: dest,
+
        radius : 500,
        types :['airport','cafe','art_gallery','church','dentist','park','stadium','zoo']
    };
@@ -113,6 +138,7 @@ function getNearbyPlaces(status,lat,lng){
    service.nearbySearch(request,callback);
 
 }
+
 
   var dest = {lat: lat, lng: lng};
 
@@ -151,3 +177,4 @@ function callback(results, status) {
 
   }
 }
+

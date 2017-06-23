@@ -4,6 +4,7 @@ var Trip   = require('../models/trip');
 
 exports.showForm=(req,res)=> {
 
+
   res.render('trip', {
     message: req.flash('errorMessage')
   });
@@ -25,6 +26,11 @@ exports.isAuthenticated = (req, res, next) => {
 
 exports.createTrip = (req, res) => {
   let newTrip = new Trip()
+  // destination: { type: String, required: true },
+  // longitude : { type: Number, required: true},
+  // latitude : { type: Number, required: true},
+  // places: [{type: mongoose.Schema.ObjectId, ref: 'Place'}],
+  // user : {type: mongoose.Schema.ObjectId, ref: 'User'}
   newTrip.destination = req.body.destination
   newTrip.longitude= req.body.longitude
   newTrip.latitude = req.body.latitude
@@ -40,6 +46,7 @@ exports.createTrip = (req, res) => {
 
 
 exports.getAll = (req, res) => {
+
   Trip.find((err, trips) => {
     if (err) res.json({message: 'could not find trips because: ' + err})
     console.log('getting all')
@@ -72,4 +79,25 @@ function removeTrip(req,res) {
     res.status(200).send();
 
   })
+
+	Trip.find((err, trips) => {
+		if (err) res.json({message: 'could not find trips because: ' + err})
+		console.log('getting all')
+		res.render('destination', {
+			title: 'destinations',
+			destinations: trips
+		})
+	})
+}
+
+exports.getOne = (req, res) => {
+	const id = req.params.id
+	Trip.findById({_id: id}, (err, trip) => {
+		if (err) res.json({message: 'could not find trip by id because: ' + err})
+		res.render('destination', {
+			title: 'destination',
+			destination: trip
+		})
+	})
+
 }

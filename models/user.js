@@ -66,10 +66,17 @@ userSchema.methods.gravatar = function gravatar(size) {
   return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };
 userSchema.pre('remove', function(next){
+
   console.log("pre function called");
   console.log(this)
   this.model('User').remove({ user: this._id}).exec();
   next();
+
+	console.log("pre function called");
+	console.log(this)
+	this.model('User').remove({ user: this._id}).exec();
+	next();
+
 })
 const User = mongoose.model('User', userSchema);
 

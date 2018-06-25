@@ -11,7 +11,9 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha --reporter spec",
-    "postinstall": "npm rebuild node-sass"
+    "postinstall": "npm rebuild node-sass",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
@@ -51,7 +53,8 @@
     "socket.io": "^2.0.3",
     "socket.io-stream": "^0.9.1",
     "twit": "^2.2.5",
-    "validator": "^7.0.0"
+    "validator": "^7.0.0",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -74,5 +77,6 @@
       "no-console": 0,
       "no-plusplus": 0
     }
-  }
+  },
+  "snyk": true
 }
